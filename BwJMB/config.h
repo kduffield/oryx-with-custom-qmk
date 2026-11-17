@@ -1,3 +1,6 @@
+// Needed by the custom reactive effects in rgb_matrix_user.inc
+#define RGB_MATRIX_KEYPRESSES
+
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
 
