@@ -44,3 +44,17 @@
 #undef ENABLE_RGB_MATRIX_STARLIGHT
 #undef ENABLE_RGB_MATRIX_STARLIGHT_DUAL_HUE
 #undef ENABLE_RGB_MATRIX_STARLIGHT_DUAL_SAT
+
+// Needed by all reactive effects: tracks which keys were pressed
+#define RGB_MATRIX_KEYPRESSES
+
+// Solid reactive family
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE            // hue shift on the pressed key, fades back
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE       // glow spreading sideways from the key
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS      // glow along the key's row and column
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS      // lines shooting out along the row and column
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+#define ENABLE_RGB_MATRIX_SOLID_SPLASH              // ripple outwards from the key
+#define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
