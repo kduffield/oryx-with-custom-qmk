@@ -16,7 +16,7 @@ enum tap_dance_codes {
   DANCE_0,
 };
 
-#define DUAL_FUNC_0 LT(11, KC_B)
+#define DUAL_FUNC_0 LT(7, KC_4)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -42,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT_voyager(
     KC_TRANSPARENT, RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_VAD,        RGB_VAI,                                        KC_TRANSPARENT, KC_F20,         KC_F21,         KC_F22,         KC_F23,         KC_TRANSPARENT, 
-    KC_TRANSPARENT, RGB_HUD,        RGB_HUI,        RGB_SAD,        RGB_SAI,        KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_F20),   LSFT(KC_F21),   LSFT(KC_F22),   LSFT(KC_F23),   KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_F13,         KC_F14,         KC_F15,         KC_F16,         KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F17,         KC_F18,         KC_F19,         KC_F24,         KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, RGB_SPD,        RGB_SPI,        KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_F17),   LSFT(KC_F18),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, RGB_HUD,        RGB_HUI,        RGB_SAD,        RGB_SAI,        RGB_SPI,                                        KC_TRANSPARENT, LSFT(KC_F20),   LSFT(KC_F21),   LSFT(KC_F22),   LSFT(KC_F23),   KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_F13,         KC_F14,         KC_F15,         KC_F16,         RGB_SPD,                                        KC_TRANSPARENT, KC_F17,         KC_F18,         KC_F19,         KC_F24,         KC_TRANSPARENT, 
+    KC_TRANSPARENT, LSFT(KC_F13),   LSFT(KC_F14),   LSFT(KC_F15),   LSFT(KC_F16),   KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_F17),   LSFT(KC_F18),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
