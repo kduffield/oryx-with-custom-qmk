@@ -7,6 +7,12 @@
 // Hue shift used by the SOLID_BG_* effects in rgb_matrix_user.inc.
 extern uint8_t solid_bg_hue_shift;
 
+// Highlight saturation for a given idle saturation (used by the same effects).
+uint8_t solid_bg_highlight_sat(uint8_t idle_s);
+
+// Highlight brightness for a given idle brightness (used by the same effects).
+uint8_t solid_bg_highlight_val(uint8_t idle_v);
+
 // Call once from keyboard_post_init_user().
 void rgb_tools_init(void);
 

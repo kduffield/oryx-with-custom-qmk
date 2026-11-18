@@ -25,8 +25,10 @@ RGB_MATRIX_EFFECT(SOLID_BG_MULTISPLASH)
 // for its presets and default.
 extern uint8_t solid_bg_hue_shift;
 #    define SOLID_BG_HUE_SHIFT solid_bg_hue_shift
-// Uncomment to force the highlight's saturation (0 = white highlight).
-// #define SOLID_BG_HIGHLIGHT_SAT 0
+// Highlight brightness, set per preset and scaled by the brightness keys.
+uint8_t solid_bg_highlight_val(uint8_t idle_v);
+// Highlight saturation, set per preset and scaled by the saturation keys.
+uint8_t solid_bg_highlight_sat(uint8_t idle_s);
 // ---------------------------------------------------------------------------
 
 // A "shape" returns how strongly one key press affects one LED:
@@ -77,9 +79,8 @@ static bool solid_bg_runner(bool multi, effect_params_t *params, solid_bg_shape_
     HSV base = rgb_matrix_config.hsv;
     HSV high = base;
     high.h += SOLID_BG_HUE_SHIFT;
-#    ifdef SOLID_BG_HIGHLIGHT_SAT
-    high.s = SOLID_BG_HIGHLIGHT_SAT;
-#    endif
+    high.v = solid_bg_highlight_val(base.v);
+    high.s = solid_bg_highlight_sat(base.s);
     RGB base_rgb = hsv_to_rgb(base);
     RGB high_rgb = hsv_to_rgb(high);
 
