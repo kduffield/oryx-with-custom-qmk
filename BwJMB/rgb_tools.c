@@ -13,6 +13,9 @@
 //            (with Shift held: the Multi version of that effect)
 //   F24      Type out the current effect's name, e.g. "SOLID_BG_WIDE"
 //
+// "Shift held" can mean either holding a Shift key, or a key set up in Oryx
+// as Shift + the F-key (e.g. a dedicated Shift+F20 key). Both work.
+//
 // All values are on QMK's 0-255 scale (hue 0-255 covers the whole wheel).
 
 #include "rgb_tools.h"
@@ -143,6 +146,15 @@ static bool shift_held(void) {
 }
 
 bool process_rgb_tools(uint16_t keycode, keyrecord_t *record) {
+    bool shifted = shift_held();
+
+    // A key set in Oryx as e.g. Shift+F20 arrives as one combined keycode:
+    // split it into the F-key and its modifiers.
+    if (keycode >= QK_MODS && keycode <= QK_MODS_MAX) {
+        if (QK_MODS_GET_MODS(keycode) & MOD_LSFT) shifted = true; // left or right Shift
+        keycode = QK_MODS_GET_BASIC_KEYCODE(keycode);
+    }
+
     switch (keycode) {
         case KC_F13 ... KC_F24:
             break;
@@ -160,11 +172,11 @@ bool process_rgb_tools(uint16_t keycode, keyrecord_t *record) {
             break;
         }
         // uint8_t wraps round, so 0 - 1 = 255 and 255 + 1 = 0.
-        case KC_F17: solid_bg_hue_shift -= shift_held() ? SHIFT_BIG_STEP : 1; save_shift(); break;
-        case KC_F18: solid_bg_hue_shift += shift_held() ? SHIFT_BIG_STEP : 1; save_shift(); break;
+        case KC_F17: solid_bg_hue_shift -= shifted ? SHIFT_BIG_STEP : 1; save_shift(); break;
+        case KC_F18: solid_bg_hue_shift += shifted ? SHIFT_BIG_STEP : 1; save_shift(); break;
         case KC_F19: type_without_mods(type_values); break;
         case KC_F20 ... KC_F23:
-            rgb_matrix_mode(effects[keycode - KC_F20][shift_held() ? 1 : 0]);
+            rgb_matrix_mode(effects[keycode - KC_F20][shifted ? 1 : 0]);
             break;
         case KC_F24: type_without_mods(type_effect_name); break;
     }
