@@ -26,11 +26,12 @@ typedef struct {
     uint8_t h, s, shift;
 } rgb_preset_t;
 
+// The highlight always uses the idle colour's saturation.
 static const rgb_preset_t presets[] = {
-    {169, 255, 128}, // F13: blue (from your Oryx key), opposite-colour highlight
-    {34, 255, 128},  // F14: yellow (from your Oryx key), opposite-colour highlight
-    {131, 255, 64},  // F15: cyan (from your Oryx key), quarter-turn highlight
-    {193, 255, 64},  // F16: purple (from your Oryx key), quarter-turn highlight
+    {131, 255, 86},  // F13: cyan #00F0FF, magenta highlight #FF10F0
+    {131, 255, 161}, // F14: cyan #00F0FF, yellow highlight #FFD800
+    {192, 255, 140}, // F15: electric violet #7A00FF, acid green highlight #39FF14
+    {241, 221, 177}, // F16: hot pink #FF2079, electric blue highlight #1F51FF
 };
 
 #define SHIFT_DEFAULT 128 // used until a shift has been saved
