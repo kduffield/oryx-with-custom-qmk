@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "rgb_tools.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
@@ -58,6 +59,7 @@ RGB hsv_to_rgb_with_value(HSV hsv) {
 }
 
 void keyboard_post_init_user(void) {
+  rgb_tools_init();
   rgb_matrix_enable();
 }
 
@@ -181,6 +183,7 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_rgb_tools(keycode, record)) return false;
   switch (keycode) {
   case QK_MODS ... QK_MODS_MAX:
     // Mouse and consumer keys (volume, media) with modifiers work inconsistently across operating systems,

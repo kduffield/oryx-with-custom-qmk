@@ -21,9 +21,10 @@ RGB_MATRIX_EFFECT(SOLID_BG_MULTISPLASH)
 // ---- Settings you can change ----------------------------------------------
 // How far round the colour wheel the highlight is from the idle colour.
 // 0-255 covers the whole wheel: 128 = opposite colour, 0 = same colour.
-#    ifndef SOLID_BG_HUE_SHIFT
-#        define SOLID_BG_HUE_SHIFT 128
-#    endif
+// This is now a variable controlled by the RGB tool keys: see rgb_tools.c
+// for its presets and default.
+extern uint8_t solid_bg_hue_shift;
+#    define SOLID_BG_HUE_SHIFT solid_bg_hue_shift
 // Uncomment to force the highlight's saturation (0 = white highlight).
 // #define SOLID_BG_HIGHLIGHT_SAT 0
 // ---------------------------------------------------------------------------
